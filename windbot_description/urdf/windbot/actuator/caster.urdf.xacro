@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find windbot_description)/urdf/windbot/common_inertia.xacro" />
+    <xacro:macro name="caster_xacro" params="caster_name xyz">
+        <link name="${caster_name}_caster_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <sphere radius="0.016" />
+                </geometry>
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8" />
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <sphere radius="0.016" />
+                </geometry>
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8" />
+                </material>
+            </collision>
+                        <xacro:sphere_inertia m="1.0" r="0.016" />
+        </link>
+
+        <joint name="${caster_name}_caster_joint" type="fixed">
+            <parent link="base_link" />
+            <child link="${caster_name}_caster_link" />
+            <origin xyz="${xyz}" />
+            <axis xyz="0 0 0" />
+        </joint>
+
+        <xacro:macro name="wheel_xacro" params="wheel_name xyz">
+            <gazebo reference="${caster_name}_caster_link">
+                <mu1 value="0.0" />
+                <mu2 value="0.0" />
+                <kp value="1000000000.0" />
+                <kd value="1.0" />
+            </gazebo>
+        </xacro:macro> <!-- 补充 wheel_xacro 宏的结束标签 -->
+    </xacro:macro> <!-- 补充 caster_xacro 宏的结束标签 -->
+</robot> <!-- 补充 robot 标签的结束标签 -->
