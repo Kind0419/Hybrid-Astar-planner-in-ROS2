@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <!-- 错误1：包名不符合ROS命名规范，应全小写并使用下划线分隔 -->
+  <!-- 修正：将"nav2_hybridAstar_planner"改为"nav2_hybrid_astar_planner" -->
+  <name>nav2_hybrid_astar_planner</name>
+  <version>0.0.0</version>
+  <description>Hybrid A* global planner plugin for Nav2</description>
+  <maintainer email="kind@todo.todo">kind</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- 错误2：重复声明<depend>标签，且使用了不推荐的通用依赖标签 -->
+  <!-- 错误3：未区分build_depend、build_export_depend和exec_depend -->
+  <!-- 修正：使用具体的依赖类型标签，避免重复声明 -->
+  
+  <!-- 构建工具依赖 -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- 编译时依赖 -->
+  <build_depend>nav2_core</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <build_depend>nav2_costmap_2d</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+
+  <!-- 编译导出依赖（供其他包编译时使用） -->
+  <build_export_depend>nav2_core</build_export_depend>
+  <build_export_depend>pluginlib</build_export_depend>
+  <build_export_depend>nav2_costmap_2d</build_export_depend>
+  <build_export_depend>tf2_ros</build_export_depend>
+
+  <!-- 运行时依赖 -->
+  <exec_depend>nav2_core</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>nav2_costmap_2d</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+
+  <!-- 测试依赖 -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <!-- 插件导出声明 -->
+  <export>
+    <build_type>ament_cmake</build_type> <!-- 添加构建类型声明 -->
+    <nav2_core plugin="${prefix}/hybridAstar_planner_plugin.xml" />
+  </export>
+
+</package>

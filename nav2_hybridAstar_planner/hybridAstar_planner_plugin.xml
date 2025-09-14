@@ -1,0 +1,10 @@
+<!-- 修复后的完整 XML 文件 -->
+<library path="nav2_hybrid_astar_planner_plugin">
+  <!-- path：与 CMake 生成的动态库名称完全一致（不含lib前缀） -->
+  <class name="nav2_hybridAstar_planner::HybridAstar" 
+         type="nav2_hybridAstar_planner::HybridAstar" 
+         base_class_type="nav2_core::GlobalPlanner">
+    <!-- name/type：与代码中 PLUGINLIB_EXPORT_CLASS 的第一个参数完全一致 -->
+    <description>Hybrid A* 全局规划器插件，用于生成满足非完整约束的路径。</description>
+  </class>
+</library>
