@@ -8,7 +8,7 @@
 #include "nav2_hybridAstar_planner/nav2_hybridAstar_planner.hpp"
 #include "nav2_costmap_2d/costmap_2d_ros.hpp"
 
-#define MaxCount 100000 // ✅ 修改：将最大搜索次数从 2.1e8 降为 100000，避免无效大循环
+#define MaxCount 100000 
 
 namespace nav2_hybridAstar_planner
 {
@@ -262,7 +262,7 @@ namespace nav2_hybridAstar_planner
     {
         std::vector<Node> neighbors;
 
-        const double step_size = 0.25; // 推荐步长：0.2 ~ 0.3，不要用 interpolation_resolution_
+        const double step_size = 0.25; // 推荐步长：0.2 ~ 0.3
         // const double angles_deg[8] = {0, 45, 90, 135, 180, 225, 270, 315};  // 8 方向
         const double angles[8] = {
             0.0,
